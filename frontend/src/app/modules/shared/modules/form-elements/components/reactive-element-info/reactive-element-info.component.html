@@ -1,0 +1,11 @@
+<span i18n [class.opacity-hidden]="!isError" class="has-text-danger opacity-transition">
+    {
+        latestErrorName,
+        select,
+        required {Element is required}
+        minlength {You need at least {{control?.errors?.minlength?.requiredLength}} actually you have {{control?.errors?.minlength?.actualLength}}}
+        email {Email is not valid}
+        passwordnotequals {Passwords are not equal}
+        other {Value is not valid: {{errorName}}}
+    }
+</span>

@@ -1,0 +1,23 @@
+<form
+    class="sign-in-form" 
+    [formGroup]="signInForm" 
+    (ngSubmit)="submit()">
+    <h3 class="title">Sign up</h3>
+
+    <app-reactive-input 
+        formControlName="email"
+        description="📧 Email"
+        i18n-description
+        type="email">
+    </app-reactive-input>
+    
+    <app-reactive-input 
+        formControlName="password"
+        description="🔒 Password"
+        i18n-description
+        type="password">
+    </app-reactive-input>
+
+    <button i18n type="submit" class="button is-primary mt-5">Sign in</button>
+    <button [routerLink]="['/sign/up']" i18n class="button is-link mt-3 is-outlined">Sign up</button>
+</form>

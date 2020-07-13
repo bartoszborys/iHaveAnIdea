@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+html, body {
+    min-height: 100vh;
+    overflow: auto;
+}
+
+html {
+    --scrollbarBG: #CFD8DC;
+    --thumbBG: #90A4AE;
+}
+
+body {
+    scrollbar-width: thin;
+    scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+    
+    &::-webkit-scrollbar {
+        width: 11px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: var(--scrollbarBG);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--thumbBG) ;
+        border-radius: 6px;
+        border: 3px solid var(--scrollbarBG);
+    }
+}
+
+$test: 12px;

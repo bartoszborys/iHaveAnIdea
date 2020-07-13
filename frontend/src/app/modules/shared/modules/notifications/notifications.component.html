@@ -1,0 +1,19 @@
+<div 
+  *ngIf="!!latestMessage" 
+  [ngClass]="backgroundClass" 
+  (mouseover)="clearHideTimeout()" 
+  (mouseout)="setHideTimeout()" 
+  class="notification notification-animated px-4" style="box-shadow: 0 0 2px 0.2px black;flex: 1;">
+    <button class="delete" (click)="remove()"></button>
+    <div class="tabs is-small mb-1" style="overflow: hidden;">
+        <ul style="border: 0;">
+          <li 
+            *ngFor="let message of messages" 
+            [ngClass]="tabColorClassFor(message)" 
+            (click)="select(message)"
+            class="has-text-weight-medium tab-element">
+          </li>
+        </ul>
+      </div>
+    <div class="content" [class.content--hidden]="isHidden">{{selected.message}}</div>
+</div>

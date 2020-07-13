@@ -1,0 +1,43 @@
+:host{
+    display: flex;
+}
+
+.notification-animated {
+    animation-name: notification-in;
+    animation-duration: .6s;
+    transition: color .2s linear, background-color .2s linear;
+
+    .content {
+        transition: max-height .3s ease-in-out;
+        max-height: 100px;
+        overflow: auto;
+
+        &--hidden {
+            overflow: hidden;
+            max-height: 0px;
+        }
+    }
+}
+
+.tab-element {
+    width: 15px;
+    height: 15px;
+    border-radius: 25%;
+    margin: .25rem;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+@keyframes notification-in {
+    from {
+        overflow: hidden;
+        transform: scale(0);
+    }
+    80% {
+        transform: scale(1.2);
+    }
+    to {
+        overflow: auto;
+        transform: scale(1);
+    }
+}

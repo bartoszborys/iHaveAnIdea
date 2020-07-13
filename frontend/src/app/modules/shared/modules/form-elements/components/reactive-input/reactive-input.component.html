@@ -1,0 +1,13 @@
+<label class="is-size-6 has-text-weight-medium mb-2">
+    <span>{{description}}</span>
+    <input 
+        class="input" 
+        [class.is-danger]="isError"
+        [class.is-success]="isSuccess"
+        [formControl]="control"
+        [attr.type]="type"
+        [attr.disabled]="isDisabled"/>
+    <app-reactive-element-info
+        [control]="control">
+    </app-reactive-element-info>
+</label>
