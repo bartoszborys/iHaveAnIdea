@@ -1,0 +1,14 @@
+:host {
+    display: flex;
+    
+    .progress {
+        transition: opacity .1s linear;
+        opacity: 1;
+        height: 2px;
+        margin-bottom: .5rem;
+
+        &--hidden {
+            opacity: 0;
+        }
+    }
+}

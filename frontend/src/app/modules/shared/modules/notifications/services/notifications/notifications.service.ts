@@ -8,8 +8,6 @@ import { Notifications } from '../../interfaces/notifications.interface';
 export class NotificationsService {
   public notificationsBus: Subject<Notifications> = new Subject<Notifications>();
 
-  public constructor() { }
-
   public push(message: Notifications): void {
     this.notificationsBus.next(message);
   }
