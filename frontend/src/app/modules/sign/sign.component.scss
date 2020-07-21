@@ -4,14 +4,14 @@
     margin: auto;
     width: 512px;
 
-    .form-wrapper {
-        margin-top: 1rem;
-        display: flex;
-        justify-content: center;
-        overflow: auto;
-    }
-
     @include until($tablet) {
         width: 100%!important;
     }
+}
+
+.form-wrapper {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    overflow: auto;
 }
