@@ -31,8 +31,8 @@ export class SingInComponent implements OnInit {
 
   submit(): void {
     this.notifications.push({
-      title: "Registration",
-      message: "Koalicja Odnowy Rzeczypospolitej Wolność i Nadzieja (KORWiN, Wolność) – polska prawicowa, konserwatywno-liberalna i eurosceptyczna[4] partia polityczna założona w styczniu 2015 przez część działaczy Kongresu Nowej Prawicy skupionych wokół Janusza Korwin-Mikkego, zarejestrowana sądownie 23 czerwca 2015. 8 października 2016 ",
+      title: "Connection Failed",
+      message: "Cannot establish connection with server, please try again later...",
       type: NotificationsTypes.Error
     });
 
