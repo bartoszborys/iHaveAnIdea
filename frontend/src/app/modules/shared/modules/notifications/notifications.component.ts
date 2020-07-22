@@ -16,11 +16,11 @@ export class NotificationsComponent implements AfterViewInit {
   public readonly messages: Notifications[] = [];
   public readonly hideTimeout: number = 2500;
   public isHidden: boolean = true;
-  public selected: Notifications | null = null;
+  public selected?: Notifications = null;
 
   private currentTimeout?: number | any;
 
-  constructor(private notifications: NotificationsService) { }
+  constructor(private readonly notifications: NotificationsService) { }
 
   public ngAfterViewInit(): void {
     this.notifications.bus.subscribe({
@@ -41,7 +41,7 @@ export class NotificationsComponent implements AfterViewInit {
   public select(notification: Notifications): void {
     if(this.selected === notification) {
       this.isHidden = !this.isHidden;
-    } else { 
+    } else {
       this.showMessage();
       this.selected = notification;
     }
