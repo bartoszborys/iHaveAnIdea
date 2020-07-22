@@ -15,8 +15,8 @@
     <app-notification-progress-bar
       [timeout]="hideTimeout">
     </app-notification-progress-bar>
-    <div class="notification__content" [class.notification__content--hidden]="isHidden">
-      <header class="subtitle">{{selected?.title}}</header>
-      <span>{{selected?.message}}</span>
-    </div>
+    <app-notification-content
+      [notification]="selected"
+      [isHidden]="isHidden">
+    </app-notification-content>
 </div>
