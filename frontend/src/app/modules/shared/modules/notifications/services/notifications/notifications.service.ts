@@ -3,7 +3,7 @@ import { Subject, Observable } from 'rxjs';
 import { Notifications } from '../../interfaces/notifications.interface';
 
 @Injectable({
-  providedIn: 'any',
+  providedIn: 'root',
 })
 export class NotificationsService {
   public notificationsBus: Subject<Notifications> = new Subject<Notifications>();
