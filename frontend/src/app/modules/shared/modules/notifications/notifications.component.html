@@ -3,9 +3,9 @@
   [ngClass]="backgroundClass" 
   (mouseenter)="clearHideTimeout()" 
   (mouseleave)="setHideTimeout()" 
-  class="notification px-4">
+  class="notification notification--scale-in px-4">
   <button class="delete" (click)="remove()"></button>
-    <div class="tile-wrapper tabs is-small">
+    <div class="tiles-wrapper tabs is-small">
       <app-notification-select-tile
         *ngFor="let message of messages" 
         [type]="message.type"
