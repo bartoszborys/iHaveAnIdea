@@ -42,11 +42,11 @@ export class NotificationsComponent implements AfterViewInit, OnDestroy {
     this.runHideCountdown();
   }
 
-  public get isNotificationsEmpty() {
+  public get isNotificationsEmpty(): boolean {
     return this.messages?.length <= 0;
   }
 
-  public isSelected(message: Notifications) {
+  public isSelected(message: Notifications): boolean {
     return !this.isContentHidden && (this.selected === message);
   }
 
@@ -69,7 +69,7 @@ export class NotificationsComponent implements AfterViewInit, OnDestroy {
     this.hideContent();
   }
 
-  public clearHideCountdown() {
+  public clearHideCountdown(): void {
     if(this.isContentHidden) {
       return;
     }
@@ -79,10 +79,6 @@ export class NotificationsComponent implements AfterViewInit, OnDestroy {
 
   private showContent(): void {
     this.isContentHidden = false;
-  }
-
-  private toggleContent(): void {
-    this.isContentHidden = !this.isContentHidden;
   }
 
   private hideContent(): void {
@@ -104,12 +100,16 @@ export class NotificationsComponent implements AfterViewInit, OnDestroy {
     this.setBackgroundClass(notification.type);
   }
 
+  private toggleContent(): void {
+    this.isContentHidden = !this.isContentHidden;
+  }
+
   private changeContentTo(newSelected: Notifications) {
     this.selected = newSelected;
     this.showContent();
   }
 
-  private setBackgroundClass(type: NotificationsTypes) {
+  private setBackgroundClass(type: NotificationsTypes): void {
     const backgroundClass = this.getBackgroundColorClassFor(type);
     if(this.backgroundClass === backgroundClass) {
       return;
