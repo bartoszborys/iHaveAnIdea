@@ -88,25 +88,4 @@ export class NotificationsComponent implements AfterViewInit {
       'is-link': this.selected?.type === NotificationsTypes.Info,
     };
   }
-
-  public tabColorClassFor(element: Notifications): Object {
-    const cssClasses = {};
-
-    if(!element) {
-      return cssClasses;
-    }
-
-    if(this?.selected === element && !this.isHidden) {
-      Object.assign(cssClasses, {
-        'is-selected': true,
-      });
-    }
-
-    return Object.assign(cssClasses, {
-      'has-background-success': element?.type === NotificationsTypes.Success,
-      'has-background-warning': element?.type === NotificationsTypes.Warning,
-      'has-background-danger': element?.type === NotificationsTypes.Error,
-      'has-background-link': element?.type === NotificationsTypes.Info,
-    });
-  }
 }

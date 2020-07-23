@@ -3,11 +3,14 @@
 }
 
 .notification {
-    animation-name: notification-in;
-    animation-duration: .6s;
     transition: color .2s linear, background-color .2s linear;
     box-shadow: 0 0 2px 0.2px black;
     flex: 1;
+
+    &--scale-in {
+        animation-name: scale-in;
+        animation-duration: .6s;
+    }
 }
 
 .tile-wrapper {
@@ -18,7 +21,7 @@
     border: 0;
 }
 
-@keyframes notification-in {
+@keyframes scale-in {
     from {
         overflow: hidden;
         transform: scale(0);
@@ -29,45 +32,5 @@
     to {
         overflow: auto;
         transform: scale(1);
-    }
-}
-
-@keyframes tile-in {
-    from {
-        transform: scale(0);
-    }
-    80% {
-        transform: scale(1.1);
-    }
-    to {
-        transform: scale(1);
-    }
-}
-
-@keyframes arrow-in {
-    from {
-        transform: rotate(270deg);
-    }
-    to {
-        transform: rotate(45deg);
-    }
-}
-
-.is-selected {
-    animation-name: tile-in;
-    animation-duration: .3s;
-    &::after {
-        animation-name: arrow-in;
-        animation-duration: .5s;
-        width: 7px;
-        height: 7px;
-        content: ' ';
-        position: absolute;
-        top: -11px;
-        left: 2px;
-        border: 2px solid black;
-        border-top: 0;
-        border-left: 0;
-        transform: rotate(45deg);
     }
 }

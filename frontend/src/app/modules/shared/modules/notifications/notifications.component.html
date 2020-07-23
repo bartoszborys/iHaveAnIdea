@@ -8,7 +8,8 @@
     <div class="tile-wrapper tabs is-small">
       <app-notification-select-tile
         *ngFor="let message of messages" 
-        [ngClass]="tabColorClassFor(message)" 
+        [type]="message.type"
+        [isSelected]="selected === message && !isHidden"
         (click)="select(message)">
       </app-notification-select-tile>
     </div>
