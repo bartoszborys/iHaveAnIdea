@@ -1,15 +1,15 @@
 <div 
-  [hidden]="messages?.length <= 0"
+  [hidden]="isNotificationsEmpty"
   [ngClass]="backgroundClass" 
-  (mouseenter)="clearHideTimeout()" 
-  (mouseleave)="setHideTimeout()" 
+  (mouseenter)="clearHideCountdown()" 
+  (mouseleave)="runHideCountdown()" 
   class="notification notification--scale-in px-4">
   <button class="delete" (click)="remove()"></button>
     <div class="tiles-wrapper tabs is-small">
       <app-notification-select-tile
         *ngFor="let message of messages" 
         [type]="message.type"
-        [isSelected]="selected === message && !isHidden"
+        [isSelected]="isSelected(message)"
         (click)="select(message)">
       </app-notification-select-tile>
     </div>
@@ -18,6 +18,6 @@
     </app-notification-progress-bar>
     <app-notification-content
       [notification]="selected"
-      [isHidden]="isHidden">
+      [isHidden]="isContentHidden">
     </app-notification-content>
 </div>
