@@ -87,7 +87,8 @@ export class NotificationsComponent implements AfterViewInit, OnDestroy {
 
   public remove(): void {
     this.messages.splice(this.messages.indexOf(this.selected), 1);
-    this.selected = this.messages.length > 0 ? this.messages[0] : null;
+    const message = this.messages.length > 0 ? this.messages[0] : null;
+    this.select(message);
   }
 
   public select(notification: Notifications): void {
