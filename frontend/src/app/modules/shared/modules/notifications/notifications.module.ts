@@ -6,8 +6,6 @@ import { NotificationProgressBarComponent } from './components/notification-prog
 import { NotificationSelectTileComponent } from './components/notification-select-tile/notification-select-tile.component';
 import { NotificationContentComponent } from './components/notification-content/notification-content.component';
 
-
-
 @NgModule({
   providers: [
     NotificationsService,
