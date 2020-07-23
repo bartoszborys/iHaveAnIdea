@@ -21,28 +21,62 @@ export class NotificationProgressBarComponent {
 
   private currentInterval?: number | any;
 
-  public run() {
+  private resolver: ((value: unknown) => void) | null = null;
+
+  public run(): Promise<boolean> {
     this.clear();
-    this.startCountdown();
+
+    return new Promise<boolean>((resolve, reject) => {
+      this.resolver = resolve;
+
+      try{
+        this.startCountdown();
+      } catch(e) {
+        reject(e);
+      }
+    });
   }
 
-  public clear() {
+  public clear(): void {
+    if(this.resolver !== null) {
+      this.resolver(false);
+      this.clearResolver();
+    }
+
     if(this.currentInterval) {
       clearInterval(this.currentInterval);
     }
+
     this.timeoutProgress = 0;
   }
 
-  private startCountdown() {
-    this.currentInterval = setInterval(()=> {
-      this.timeoutProgress++;
-      if(this.timeoutProgress >= this.progressBarMax) {
-        this.clear();
-      }
-    }, this.realTimeout);
+  private clearResolver(): void {
+    this.resolver = null;
   }
 
-  private get realTimeout() {
+  private startCountdown(): void {
+    this.currentInterval = setInterval(() => this.countdownTick(), this.realTimeout);
+  }
+
+  private countdownTick(): void {
+    this.timeoutProgress++;
+    if(!this.isCountdownFinished) {
+      return;
+    }
+
+    if(this.resolver) {
+      this.resolver(true);
+      this.clearResolver();
+    }
+
+    this.clear();
+  }
+
+  private get isCountdownFinished(): boolean {
+    return this.timeoutProgress >= this.progressBarMax;
+  }
+
+  private get realTimeout(): number {
     return this.timeout / this.progressBarMax;
   }
 }

@@ -23,8 +23,6 @@ export class NotificationsComponent implements AfterViewInit, OnDestroy {
   public selected?: Notifications = null;
   public backgroundClass: string = "";  
 
-  private currentTimeout?: number | any;
-
   constructor(private readonly notifications: NotificationsService) { }
 
   public ngAfterViewInit(): void {
@@ -52,17 +50,23 @@ export class NotificationsComponent implements AfterViewInit, OnDestroy {
     return !this.isContentHidden && (this.selected === message);
   }
 
-  public runHideCountdown() {
+  public async runHideCountdown(): Promise<void> {
     if(this.isContentHidden) {
       return;
     }
 
     this.clearHideCountdown();
+    await this.runProggressBar();
+  }
 
-    this.progressBar?.run();
-    this.currentTimeout = setTimeout(()=> {
-      this.hideContent();
-    }, this.hideTimeout);
+  private async runProggressBar(): Promise<void> {
+    const isFinished = await this.progressBar?.run();
+
+    if(!isFinished) {
+      return;
+    }
+    
+    this.hideContent();
   }
 
   public clearHideCountdown() {
@@ -71,10 +75,6 @@ export class NotificationsComponent implements AfterViewInit, OnDestroy {
     }
 
     this.progressBar?.clear();
-    
-    if(this.currentTimeout) {
-      clearTimeout(this.currentTimeout);
-    }
   }
 
   private showContent(): void {
