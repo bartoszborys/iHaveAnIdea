@@ -4,6 +4,8 @@ import { Component } from '@angular/core';
 import { NotificationsService } from 'src/app/modules/shared/modules/notifications/services/notifications/notifications.service';
 import { RedirectService } from 'src/app/modules/shared/services/redirect/redirect.service';
 import { NotificationsTypes } from 'src/app/modules/shared/modules/notifications/constants/notifications-types.constant';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/modules/shared/services/auth/auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,7 +13,6 @@ import { NotificationsTypes } from 'src/app/modules/shared/modules/notifications
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent {
-  public isLoading: boolean = false;
   public signUpForm = this.builder.group({
     email: ['', [
       Validators.required,
@@ -31,30 +32,49 @@ export class SignUpComponent {
     validators: equalPasswordValidator, 
   });
   
+  public register$?: Subscription = null;
 
-  constructor(
+  public constructor(
     private builder: FormBuilder,
     private notifications: NotificationsService,
     private redirect: RedirectService,
+    private auth: AuthService,
   ) { }
 
-  submit(): void {
-    if(this.isLoading) {
-      return;
+  public get isRegistrationPending(): boolean {
+    if(!this.register$) {
+      return false;
     }
-
-    this.isLoading = true;
-    setTimeout(()=> {
-      this.isLoading = false;
-
-      this.notifications.push({
-        title: "Registration",
-        message: "You have been succesful registerd",
-        type: NotificationsTypes.Success
-      });
-
-      this.redirect.login();
-    }, 1512);
+    return !this.register$?.closed;
   }
 
+  public submit(): void {
+    this.register$ = this.auth.register().subscribe(
+      (isSuccess: boolean) => this.registerAttempt(isSuccess),
+    );
+  }
+
+  private registerAttempt(isSuccess: Boolean): void {
+    if(!isSuccess) {
+      return this.notifyRegisterError();
+    }
+    this.notifyRegisterSuccess();
+    this.redirect.login();
+  }
+
+  private notifyRegisterSuccess(): void {
+    this.notifications.push({
+      title: "Registration",
+      message: "You have been succesful registerd!",
+      type: NotificationsTypes.Success
+    });
+  }
+
+  private notifyRegisterError(): void {
+    this.notifications.push({
+      title: "Registration",
+      message: "Account couldn't be created!",
+      type: NotificationsTypes.Error
+    });
+  }
 }

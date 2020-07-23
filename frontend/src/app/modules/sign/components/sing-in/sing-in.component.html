@@ -18,6 +18,6 @@
         type="password">
     </app-reactive-input>
 
-    <button i18n type="submit" class="button is-primary mt-5">Sign in</button>
+    <button i18n type="submit" class="button is-primary mt-5" [class.is-loading]="isLoginPending">Sign in</button>
     <button [routerLink]="['/sign/up']" i18n class="button is-link mt-3 is-outlined">Sign up</button>
 </form>
