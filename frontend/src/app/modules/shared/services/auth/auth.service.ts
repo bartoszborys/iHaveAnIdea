@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import { Pending } from '../../interfaces/Pending/Pending';
 
 @Injectable({
   providedIn: 'root'
@@ -9,21 +10,24 @@ export class AuthService {
 
   constructor() { }
 
-  public login(): Observable<Boolean> {
-    return of(false).pipe(
+  public login(): Pending<boolean> {
+    return new Pending(of(false)
+    .pipe(
       delay(2000),
-    );
+    ));
   }
 
-  public register(): Observable<boolean> {
-    return of(true).pipe(
-      delay(2000),
-    );
+  public register(): Pending<boolean> {
+    return new Pending(of(false)
+      .pipe(
+        delay(2000),
+      ));
   }
 
-  public isLogged(): Observable<Boolean> {
-    return of(false).pipe(
-      delay(2000),
-    );
+  public isLogged(): Pending<Boolean> {
+    return new Pending(of(false)
+      .pipe(
+        delay(2000),
+      ));
   }
 }

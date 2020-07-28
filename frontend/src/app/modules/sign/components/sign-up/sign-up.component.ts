@@ -6,6 +6,7 @@ import { RedirectService } from 'src/app/modules/shared/services/redirect/redire
 import { NotificationsTypes } from 'src/app/modules/shared/modules/notifications/constants/notifications-types.constant';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/modules/shared/services/auth/auth.service';
+import { Pending } from 'src/app/modules/shared/interfaces/Pending/Pending';
 
 @Component({
   selector: 'app-sign-up',
@@ -32,7 +33,7 @@ export class SignUpComponent {
     validators: equalPasswordValidator, 
   });
   
-  public register$?: Subscription = null;
+  public registerRequest?: Pending<boolean> = null;
 
   public constructor(
     private builder: FormBuilder,
@@ -41,15 +42,9 @@ export class SignUpComponent {
     private auth: AuthService,
   ) { }
 
-  public get isRegistrationPending(): boolean {
-    if(!this.register$) {
-      return false;
-    }
-    return !this.register$?.closed;
-  }
-
   public submit(): void {
-    this.register$ = this.auth.register().subscribe(
+    this.registerRequest = this.auth.register()
+    this.registerRequest.data$.subscribe(
       (isSuccess: boolean) => this.registerAttempt(isSuccess),
     );
   }

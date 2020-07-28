@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { RedirectService } from 'src/app/modules/shared/services/redirect/redirect.service';
 import { NotificationsTypes } from 'src/app/modules/shared/modules/notifications/constants/notifications-types.constant';
 import { NotificationsService } from 'src/app/modules/shared/modules/notifications/services/notifications/notifications.service';
 import { AuthService } from 'src/app/modules/shared/services/auth/auth.service';
-import { Subscription } from 'rxjs';
+import { Pending } from 'src/app/modules/shared/interfaces/Pending/Pending';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-sing-in',
@@ -22,7 +23,7 @@ export class SingInComponent {
     ]],
   });
 
-  public login$?: Subscription = null;
+  public loginRequest?: Pending<boolean> = null;
 
   public constructor(
     private builder: FormBuilder,
@@ -31,17 +32,9 @@ export class SingInComponent {
     private auth: AuthService,
   ) { }
 
-  public get isLoginPending(): boolean {
-    if(!this.login$) {
-      return false;
-    }
-    return !this.login$?.closed;
-  }
-
   public submit(): void {
-    this.login$ = this.auth.login().subscribe(
-      (isSuccess: boolean) => this.loginAttempt(isSuccess),
-    );
+    this.loginRequest = this.auth.login();
+    this.loginRequest.data$.subscribe(isSuccess => this.loginAttempt(isSuccess));
   }
 
   private loginAttempt(isSuccess: Boolean): void {
