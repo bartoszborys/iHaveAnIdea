@@ -7,12 +7,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SingInComponent } from './components/sing-in/sing-in.component';
+import { PendingButtonComponent } from './components/shared/pending-button/pending-button.component';
 
 @NgModule({
   declarations: [
     SignComponent,
     SignUpComponent,
-    SingInComponent, 
+    SingInComponent,
+    PendingButtonComponent, 
   ],
   imports: [
     CommonModule,

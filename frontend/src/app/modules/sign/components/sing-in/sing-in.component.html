@@ -17,7 +17,12 @@
         i18n-description
         type="password">
     </app-reactive-input>
+    
+    <app-pending-button
+      i18n-description
+      description="Sign in"
+      [status$]="loginRequest?.status$">
+    </app-pending-button>
 
-    <button i18n type="submit" class="button is-primary mt-5">Sign in</button>
     <button [routerLink]="['/sign/up']" i18n class="button is-link mt-3 is-outlined">Sign up</button>
 </form>
