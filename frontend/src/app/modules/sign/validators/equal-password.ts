@@ -1,6 +1,12 @@
-import { ValidatorFn, FormGroup, ValidationErrors, AbstractControl } from '@angular/forms';
+import { ValidatorFn, FormGroup, ValidationErrors, AbstractControl, FormControl } from '@angular/forms';
 
-export const equalPasswordValidator: ValidatorFn = (group: FormGroup): ValidationErrors | null => {
+export function equalPasswordValidator(fieldControl: FormControl) {
+  return fieldControl.value === fieldControl?.parent?.get("password").value ? null : {
+      passwordnotequals: true
+  };
+}
+
+const equalPasswordValidator2: ValidatorFn = (group: FormGroup): ValidationErrors | null => {
     const password = group.get('password');
     const passwordRepeat = group.get('repeatPassword');
 

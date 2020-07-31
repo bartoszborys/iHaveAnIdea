@@ -3,9 +3,9 @@
         latestErrorName,
         select,
         required {Element is required}
-        minlength {You need at least {{control?.errors?.minlength?.requiredLength}} actually you have {{control?.errors?.minlength?.actualLength}}}
+        minlength {Field must be at least {{control?.errors?.minlength?.requiredLength || 0}} characters long}
         email {Email is not valid}
         passwordnotequals {Passwords are not equal}
-        other {Value is not valid: {{errorName}}}
+        other {Value is not valid: {{latestErrorName}}}
     }
 </span>

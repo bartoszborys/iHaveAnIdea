@@ -10,18 +10,9 @@ export class ReactiveElementInfoComponent {
   @Input() 
   public readonly control: AbstractControl
 
-  public latestErrorCache: string = "";
-
   public get latestErrorName(): string | null {
     const errors = this.control.errors;
-    const latestError = errors && Object.keys(errors)[0];
-
-    if(latestError) {
-      this.latestErrorCache = latestError;
-      return latestError;
-    }
-
-    return this.latestErrorCache;
+    return errors && Object.keys(errors)[0];
   }
 
   public get isError(): boolean {
