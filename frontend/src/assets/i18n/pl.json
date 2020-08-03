@@ -1,0 +1,16 @@
+{
+  "Email": "📧 Adres email",
+  "FirstName": "✔ Imię",
+  "LastName": "✔ Nazwisko",
+  "Password": "🔒 Hasło",
+  "RepeatPassword": "🔐 Powtórz hasło",
+  "SignUp": "Zarejestruj się",
+  "SignIn": "Zaloguj się",
+  "Back": "Powrót",
+  "VALIDATION": {
+    "email": "Adres email nie jest poprawny",
+    "required": "Pole jest wymagane",
+    "minlength": "Pole musi posiadać conajmniej {{minlength.requiredLength}} znaków",
+    "passwordnotequals": "Hasła nie są takie same"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "Email": "📧 Email",
+  "FirstName": "✔ First Name",
+  "LastName": "✔ Last Name",
+  "Password": "🔒 Password",
+  "RepeatPassword": "🔐 Repeat password",
+  "SignUp": "Sign up",
+  "SignIn": "Sign in",
+  "Back": "Back",
+  "VALIDATION": {
+    "email": "Email is not valid",
+    "required": "Element is required",
+    "minlength": "Field must be at least {{minlength.requiredLength}} characters long",
+    "passwordnotequals": "Passwords are not equal"
+  }
+}

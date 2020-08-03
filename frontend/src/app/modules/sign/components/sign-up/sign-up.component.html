@@ -2,48 +2,42 @@
     class="sign-up-form" 
     [formGroup]="signUpForm" 
     (ngSubmit)="submit()">
-    <h3 class="title">Sign up</h3>
+    <h3 translate class="title">SignUp</h3>
 
     <app-reactive-input 
         formControlName="email"
-        description="📧 Email"
-        i18n-description
+        description="Email"
         type="email">
     </app-reactive-input>
 
     <app-reactive-input 
         formControlName="firstName"
-        description="✔ First Name"
-        i18n-description
+        description="FirstName"
         type="text">
     </app-reactive-input>
 
     <app-reactive-input  
         formControlName="lastName"
-        i18n-description
-        description="✔ Last Name"
+        description="LastName"
         type="text">
     </app-reactive-input>
 
     <app-reactive-input 
         formControlName="password"
-        i18n-description
-        description="🔒 Password"
+        description="Password"
         type="password">
     </app-reactive-input>
 
     <app-reactive-input 
         formControlName="repeatPassword"
-        i18n-description
-        description="🔐 Repeat password"
+        description="RepeatPassword"
         type="password">
     </app-reactive-input>
 
     <app-pending-button
-      i18n-description
-      description="Sign up"
+      description="SignUp"
       [status$]="registerRequest?.status$">
     </app-pending-button>
 
-    <button [routerLink]="['/sign']" i18n class="button is-link mt-3 is-outlined">Back</button>
+    <button translate [routerLink]="['/sign']" class="button is-link mt-3 is-outlined">Back</button>
 </form>

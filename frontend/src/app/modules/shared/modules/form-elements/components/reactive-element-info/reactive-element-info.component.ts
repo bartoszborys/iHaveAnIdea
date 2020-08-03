@@ -12,7 +12,7 @@ export class ReactiveElementInfoComponent {
 
   public get latestErrorName(): string | null {
     const errors = this.control.errors;
-    return errors && Object.keys(errors)[0];
+    return errors && `VALIDATION.${Object.keys(errors)[0]}`;
   }
 
   public get isError(): boolean {

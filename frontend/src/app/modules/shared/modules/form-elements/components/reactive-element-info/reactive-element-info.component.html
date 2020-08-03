@@ -1,11 +1,5 @@
-<span i18n [class.opacity-hidden]="!isError" class="has-text-danger opacity-transition">
-    {
-        latestErrorName,
-        select,
-        required {Element is required}
-        minlength {Field must be at least {{control?.errors?.minlength?.requiredLength || 0}} characters long}
-        email {Email is not valid}
-        passwordnotequals {Passwords are not equal}
-        other {Value is not valid: {{latestErrorName}}}
-    }
+<span
+  [innerHTML]="(latestErrorName || '&nbsp;') | translate:control?.errors"
+  [class.opacity-hidden]="!isError"
+  class="has-text-danger opacity-transition">
 </span>
