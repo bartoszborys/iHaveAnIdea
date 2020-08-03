@@ -5,4 +5,6 @@
 
 .opacity-hidden {
     opacity: 0;
+    overflow: hidden;
+    white-space: nowrap;
 }
