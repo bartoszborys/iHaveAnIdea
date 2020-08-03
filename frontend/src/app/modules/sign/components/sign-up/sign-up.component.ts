@@ -1,12 +1,11 @@
 import { FormBuilder, Validators } from '@angular/forms';
-import { equalPasswordValidator } from '../../validators/equal-password';
 import { Component } from '@angular/core';
 import { NotificationsService } from 'src/app/modules/shared/modules/notifications/services/notifications/notifications.service';
 import { RedirectService } from 'src/app/modules/shared/services/redirect/redirect.service';
 import { NotificationsTypes } from 'src/app/modules/shared/modules/notifications/constants/notifications-types.constant';
-import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/modules/shared/services/auth/auth.service';
 import { Pending } from 'src/app/modules/shared/interfaces/Pending/Pending';
+import { equalPasswordValidator } from '../../validators/equal-password';
 
 @Component({
   selector: 'app-sign-up',
@@ -26,11 +25,12 @@ export class SignUpComponent {
       Validators.minLength(8),
     ]],
     repeatPassword: ['', [
-      Validators.required,
-      Validators.minLength(8),
+      Validators.compose([
+        Validators.required,
+        Validators.minLength(8),
+        equalPasswordValidator,
+      ]),
     ]],
-  }, { 
-    validators: equalPasswordValidator, 
   });
   
   public registerRequest?: Pending<boolean> = null;
