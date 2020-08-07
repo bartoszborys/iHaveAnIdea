@@ -7,10 +7,21 @@
   "SignUp": "Sign up",
   "SignIn": "Sign in",
   "Back": "Back",
+  "ConnectionFailed": "Connection failed",
+  "Registration": "Registration",
+
   "VALIDATION": {
     "email": "Email is not valid",
     "required": "Element is required",
     "minlength": "Field must be at least {{minlength.requiredLength}} characters long",
     "passwordnotequals": "Passwords are not equal"
+  },
+
+  "SERVER": {
+    "ConnectionFailed": "Cannot establish connection with server, please try again later...",
+    "RegisterSuccess": "You account is successfully registerd!",
+    "RegisterFailed": {
+      "default": "Account couldn't be created!"
+    }
   }
 }

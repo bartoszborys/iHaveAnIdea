@@ -46,8 +46,8 @@ export class SingInComponent {
 
   private notifyLoginError(): void {
     this.notifications.push({
-      title: "Connection Failed",
-      message: "Cannot establish connection with server, please try again later...",
+      title: "ConnectionFailed",
+      message: "SERVER.ConnectionFailed",
       type: NotificationsTypes.Error
     });
   }

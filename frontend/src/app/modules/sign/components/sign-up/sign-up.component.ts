@@ -60,7 +60,7 @@ export class SignUpComponent {
   private notifyRegisterSuccess(): void {
     this.notifications.push({
       title: "Registration",
-      message: "You have been succesful registerd!",
+      message: "SERVER.RegisterSuccess",
       type: NotificationsTypes.Success
     });
   }
@@ -68,7 +68,7 @@ export class SignUpComponent {
   private notifyRegisterError(): void {
     this.notifications.push({
       title: "Registration",
-      message: "Account couldn't be created!",
+      message: "SERVER.RegisterFailed.default",
       type: NotificationsTypes.Error
     });
   }
