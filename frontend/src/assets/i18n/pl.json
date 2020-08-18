@@ -7,10 +7,21 @@
   "SignUp": "Zarejestruj się",
   "SignIn": "Zaloguj się",
   "Back": "Powrót",
+  "ConnectionFailed": "Błąd połączenia",
+  "Registration": "Rejestracja",
+
   "VALIDATION": {
     "email": "Adres email nie jest poprawny",
     "required": "Pole jest wymagane",
     "minlength": "Pole musi posiadać conajmniej {{minlength.requiredLength}} znaków",
     "passwordnotequals": "Hasła nie są takie same"
+  },
+
+  "SERVER": {
+    "ConnectionFailed": "Nie można nawiązać połączenia z serwerem, proszę spróbować później...",
+    "RegisterSuccess": "Twoje konto zostało utworzone poprawnie!",
+    "RegisterFailed": {
+      "default": "Konto nie mogło zostać utworzone"
+    }
   }
 }
