@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
   <button
     translate
     type="submit" 
-    class="button is-primary mt-5" 
+    class="button is-primary mt-5"
+    [attr.disabled]="isDisabled ? true : null" 
     [class.is-loading]="(status$ | async) === states.LOADING">
     {{description}}
   </button>
@@ -22,6 +23,9 @@ export class PendingButtonComponent {
 
   @Input()
   public readonly status$?: Observable<PendingState>;
+
+  @Input()
+  public readonly isDisabled: boolean = true;
 
   public readonly states: typeof PendingState = PendingState;
 }

@@ -36,6 +36,7 @@
 
     <app-pending-button
       description="SignUp"
+      [isDisabled]="!signUpForm.valid"
       [status$]="registerRequest?.status$">
     </app-pending-button>
 

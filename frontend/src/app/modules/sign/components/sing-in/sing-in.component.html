@@ -18,6 +18,7 @@
     
     <app-pending-button
       description="SignIn"
+      [isDisabled]="!signInForm.valid"
       [status$]="loginRequest?.status$">
     </app-pending-button>
 
