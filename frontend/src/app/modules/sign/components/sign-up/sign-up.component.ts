@@ -5,7 +5,8 @@ import { RedirectService } from 'src/app/modules/shared/services/redirect/redire
 import { NotificationsTypes } from 'src/app/modules/shared/modules/notifications/constants/notifications-types.constant';
 import { AuthService } from 'src/app/modules/shared/services/auth/auth.service';
 import { Pending } from 'src/app/modules/shared/interfaces/Pending/Pending';
-import { equalPasswordValidator } from '../../validators/equal-password';
+import { equalPasswordValidator } from '../../validators/equal-password.validator';
+import { updateDependentControl } from '../../validators/update-dependent-control.validator';
 
 @Component({
   selector: 'app-sign-up',
@@ -23,13 +24,12 @@ export class SignUpComponent {
     password: ['', [
       Validators.required,
       Validators.minLength(8),
+      updateDependentControl('repeatPassword'),
     ]],
     repeatPassword: ['', [
-      Validators.compose([
-        Validators.required,
-        Validators.minLength(8),
-        equalPasswordValidator,
-      ]),
+      Validators.required,
+      Validators.minLength(8),
+      equalPasswordValidator,
     ]],
   });
   
