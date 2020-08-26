@@ -1,6 +1,6 @@
 import { ReplaySubject, Observable, defer } from 'rxjs';
-import { PendingState } from './PendingState';
 import { tap, catchError } from 'rxjs/operators';
+import { PendingState } from '../constants/pending-state.constant';
 
 export class Pending<T> {
   public readonly states: typeof PendingState = PendingState;

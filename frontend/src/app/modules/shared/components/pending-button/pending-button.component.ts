@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
-import { PendingState } from 'src/app/modules/shared/interfaces/Pending/PendingState';
+import { PendingState } from '../../constants/pending-state.constant';
 import { Observable } from 'rxjs';
 
 @Component({

@@ -4,8 +4,7 @@ import { RedirectService } from 'src/app/modules/shared/services/redirect/redire
 import { NotificationsTypes } from 'src/app/modules/shared/modules/notifications/constants/notifications-types.constant';
 import { NotificationsService } from 'src/app/modules/shared/modules/notifications/services/notifications/notifications.service';
 import { AuthService } from 'src/app/modules/shared/services/auth/auth.service';
-import { Pending } from 'src/app/modules/shared/interfaces/Pending/Pending';
-import { tap } from 'rxjs/operators';
+import { Pending } from 'src/app/modules/shared/interfaces/pending.interface';
 
 @Component({
   selector: 'app-sing-in',

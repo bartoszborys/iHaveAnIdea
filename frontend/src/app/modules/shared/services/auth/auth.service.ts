@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
-import { Pending } from '../../interfaces/Pending/Pending';
+import { Pending } from '../../interfaces/pending.interface';
 
 @Injectable({
   providedIn: 'root'

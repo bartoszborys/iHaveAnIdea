@@ -4,7 +4,7 @@ import { NotificationsService } from 'src/app/modules/shared/modules/notificatio
 import { RedirectService } from 'src/app/modules/shared/services/redirect/redirect.service';
 import { NotificationsTypes } from 'src/app/modules/shared/modules/notifications/constants/notifications-types.constant';
 import { AuthService } from 'src/app/modules/shared/services/auth/auth.service';
-import { Pending } from 'src/app/modules/shared/interfaces/Pending/Pending';
+import { Pending } from 'src/app/modules/shared/interfaces/pending.interface';
 import { equalPasswordValidator } from '../../validators/equal-password.validator';
 import { updateDependentControl } from '../../validators/update-dependent-control.validator';
 
