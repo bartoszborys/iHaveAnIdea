@@ -5,14 +5,14 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-pending-button',
   template: `
-  <button
-    translate
-    type="submit" 
-    class="button is-primary mt-5"
-    [attr.disabled]="isDisabled ? true : null" 
-    [class.is-loading]="(status$ | async) === states.LOADING">
-    {{description}}
-  </button>
+    <button
+      translate
+      type="submit" 
+      class="button is-primary mt-5"
+      [attr.disabled]="isDisabled ? true : null" 
+      [class.is-loading]="(status$ | async) === states.LOADING">
+      {{description}}
+    </button>
   `,
   styleUrls: ['./pending-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
