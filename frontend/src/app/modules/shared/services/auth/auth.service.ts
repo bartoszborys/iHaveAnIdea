@@ -24,7 +24,7 @@ export class AuthService {
       ));
   }
 
-  public isLogged(): Pending<Boolean> {
+  public isLogged(): Pending<boolean> {
     return new Pending(of(false)
       .pipe(
         delay(2000),
